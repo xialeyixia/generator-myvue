@@ -1,19 +1,24 @@
 const Generator = require('yeoman-generator')
 module.exports = class extends Generator{
     prompting() {
-        return this.prompt({
+        return this.prompt([{
             type: 'input',
             name: 'name',
             message: 'you project name',
             default: this.appname //为项目生成目录名称
-        }).then((ans) => {
+        }, {
+            type: 'input',
+            name: 'keys',
+            message: 'you project keys',
+            default: ""
+        }]).then((ans) => {
             // ans：{name: 'use input value'}
+            console.log(ans, 888888)
             this.ans = ans
         })
     }
     writing() {
         let tmpl = [
-            'package.json',
             'index.html',
             'server.js' 
         ]
